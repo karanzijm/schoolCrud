@@ -31,3 +31,11 @@ build/
 
 ### VS Code ###
 .vscode/
+
+/schoolCrudApp/node_modules
+/schoolCrudApp/.vscode
+/schoolCrudApp/.idea
+/schoolCrudApp/.angular
+
+
+

@@ -19,11 +19,11 @@ public class Teacher implements Serializable {
     @Column(nullable = false, updatable = false)
     private Long id;
     private String name;
-    private String surname;
+    private String studentList;
 
-    public  Teacher(String name, String surname){
+    public  Teacher(String name, String studentList){
         this.name = name;
-        this.surname = surname;
+        this.studentList = studentList;
     }
     @Override
     public boolean equals(Object o) {
