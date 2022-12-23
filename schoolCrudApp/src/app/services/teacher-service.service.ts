@@ -26,6 +26,6 @@ export class TeacherServiceService {
   }
 
   public deleteTeachers(teacherId: number): Observable<void>{
-    return this.http.delete<void>(`${this.apiServiceUrl}/Teacher/delete${teacherId}`);
+    return this.http.delete<void>(`${this.apiServiceUrl}/Teacher/delete/${teacherId}`);
   }
 }

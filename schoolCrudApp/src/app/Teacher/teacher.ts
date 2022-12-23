@@ -1,4 +1,5 @@
 export interface Teacher {
-  name: String,
-  studentList: String
+  id: number;
+  name: string;
+  studentList: string;
 }
