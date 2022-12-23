@@ -12,7 +12,7 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit{
-  title = 'School CrudApp';
+  title = 'schoolCrudApp';
   public students!: Student[];
   public studentCount!: number;
   public editStudent!: Student;
