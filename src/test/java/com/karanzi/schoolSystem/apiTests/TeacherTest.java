@@ -45,7 +45,7 @@ public class TeacherTest {
         teacherRepository.save(teacher);
 
         Teacher updatedTeacher = teacherRepository.findById(3L).orElseThrow();
-        assertThat(updatedTeacher.getSurname()).isEqualTo(teacherSurname);
+        assertThat(updatedTeacher.getStudentList()).isEqualTo(teacherSurname);
 
     }
 

@@ -4,8 +4,7 @@ import {Teacher} from "./Teacher/teacher";
 import {StudentServiceService} from "./services/student-service.service";
 import {TeacherServiceService} from "./services/teacher-service.service";
 import {HttpErrorResponse} from "@angular/common/http";
-import { NgForm } from '@angular/forms';
-
+import { NgForm, FormControl, FormGroup, Validators  } from '@angular/forms';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -29,11 +28,20 @@ export class AppComponent implements OnInit{
   displayEditTeacherModal = "none"
   displayDeleteTeacherModal = "none"
 
+  teacherForm!: FormGroup
+  studentSelectedList: string[] = [];
+
   constructor(private studentService: StudentServiceService, private teacherService: TeacherServiceService) {}
 
   ngOnInit(){
     this.getTeachers();
     this.getStudents();
+
+    this.teacherForm = new FormGroup({
+      name: new FormControl('',Validators.required),
+      studentList: new FormControl('',Validators.required)
+    })
+
   }
 
   openAddStudentPopup(){
@@ -106,13 +114,12 @@ export class AppComponent implements OnInit{
 
   }
   public onAddStudent(addForm: NgForm): void {
-    // @ts-ignore
-    document.getElementById("add-student-form").click();
+    //document.getElementById("add-student-form").click();
     this.studentService.addStudents(addForm.value).subscribe({
-      next: (response: Student) => {
-        console.log(response);
+      next: () => {
         this.getStudents();
         addForm.reset();
+        this.closeAddStudentPopup();
       },
     error: (error
   :
@@ -124,13 +131,61 @@ export class AppComponent implements OnInit{
     }
   });
   }
+/*
+* add and remove students from list
+* */
+  public selectedStudents(event: Event) {
+    const element = (event.target as HTMLTextAreaElement);
+    const chosenStudent = element.value;
+    const isChecked = (<HTMLInputElement>event.target).checked
 
+    if(isChecked){
+      if(this.studentSelectedList.length < 1) {
+        this.studentSelectedList.push(chosenStudent)
+      }
+      else {
+        if((this.studentSelectedList.find(sdt => sdt === chosenStudent)) === undefined){
+          this.studentSelectedList.push(chosenStudent)
+        }
+      }
+
+    } else {
+      const index = this.studentSelectedList.findIndex(sdt => sdt === chosenStudent);
+      if(index >= 0){
+        this.studentSelectedList.splice(index,1);
+      }
+    }
+
+  }
+  public addTeacher() {
+    if(this.teacherForm.invalid){
+      return;
+    } else {
+      this.teacherForm.controls['studentList'].setValue(this.studentSelectedList.toString())
+      this.teacherService.addTeachers(this.teacherForm.value).subscribe({
+        next: () => {
+          this.getTeachers();
+          this.teacherForm.reset();
+          this.closeAddTeacherPopup();
+        },
+        error: (error
+                  :
+                  HttpErrorResponse
+        ) =>
+        {
+          alert(error.message);
+
+        }
+      });
+    }
+
+  }
   public onAddTeacher(addTeacherForm: NgForm): void {
-    // @ts-ignore
-    document.getElementById("add-teacher-form").click();
+
+    //document.getElementById("add-teacher-form").click();
+
     this.teacherService.addTeachers(addTeacherForm.value).subscribe({
-      next: (response: Teacher) => {
-        console.log(response);
+      next: () => {
         this.getTeachers();
         addTeacherForm.reset();
       },
@@ -147,8 +202,7 @@ export class AppComponent implements OnInit{
 
   public onUpdateStudent(student: Student): void {
     this.studentService.updateStudents(student).subscribe({
-      next: (response: Student) => {
-        console.log(response);
+      next: () => {
         this.getStudents();
         this.closeEditStudentPopup();
       },
@@ -160,8 +214,7 @@ export class AppComponent implements OnInit{
 
   public onUpdateTeacher(teacher: Teacher): void {
     this.teacherService.updateTeachers(teacher).subscribe({
-      next: (response: Teacher) => {
-        console.log(response);
+      next: () => {
         this.getTeachers();
         this.closeEditTeacherPopup();
       },
@@ -173,8 +226,7 @@ export class AppComponent implements OnInit{
 
   public onDeleteStudent(employeeId: number): void {
     this.studentService.deleteStudents(employeeId).subscribe({
-      next: (response: void) => {
-        console.log(response);
+      next: () => {
         this.getStudents();
         this.closeDeleteStudentPopup();
       },
@@ -186,8 +238,7 @@ export class AppComponent implements OnInit{
 
   public onDeleteTeacher(teacherId: number): void {
     this.teacherService.deleteTeachers(teacherId).subscribe({
-      next: (response: void) => {
-        console.log(response);
+      next: () => {
         this.getTeachers();
         this.closeDeleteTeacherPopup();
       },
