@@ -5,7 +5,7 @@ import { AppComponent } from './app.component';
 import {TeacherServiceService} from "./services/teacher-service.service";
 import {StudentServiceService} from "./services/student-service.service";
 import {HttpClientModule} from "@angular/common/http";
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule  } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent
@@ -13,7 +13,8 @@ import { FormsModule } from '@angular/forms';
   imports: [
     BrowserModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [TeacherServiceService, StudentServiceService,HttpClientModule],
   bootstrap: [AppComponent]

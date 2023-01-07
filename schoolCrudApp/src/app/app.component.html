@@ -207,20 +207,46 @@
         <h4 class="modal-title">Add Teacher</h4>
       </div>
       <div class="modal-body">
-        <form #addTeacherForm="ngForm" (ngSubmit)="onAddTeacher(addTeacherForm)">
-          <div class="form-group">
-            <label for="name">Name</label>
-            <input type="text" ngModel name="name" class="form-control" id="teachername" placeholder="Name" required>
+<!--        reactive form-->
+        <form [formGroup]="teacherForm" (ngSubmit)="addTeacher()">
+          <div class="form-control">
+            <label for="teacherName">Name: </label>
+            <input id="teacherName" type="text" formControlName="name">
           </div>
-          <div class="form-group">
-            <label for="editSurname">Student List</label>
-            <input type="textarea" ngModel name="studentList" class="form-control" id="studentList" placeholder="Student List" required>
+
+          <div class="form-control">
+            <h5>Student List</h5>
+            <div *ngFor="let student of students;let i=index">
+              <label for="student-list">{{student.name}}</label>
+             <input (change)="selectedStudents($event)" [value]="student.name" id="student-list" placeholder="student A, student B" type="checkbox" formControlName="studentList">
+            </div>
           </div>
-          <div class="modal-footer">
-            <button (click)="closeAddTeacherPopup()" type="button" id="add-teacher-form" class="btn btn-danger" data-dismiss="modal">Close</button>
-            <button [disabled]="addTeacherForm.invalid" type="submit" class="btn btn-primary" >Add Teacher</button>
-          </div>
+                    <div class="modal-footer">
+                      <button (click)="closeAddTeacherPopup()" type="button" id="add-teacher-form" class="btn btn-danger" data-dismiss="modal">Close</button>
+                      <button [disabled]="teacherForm.invalid" type="submit" class="btn btn-primary" >Add Teacher</button>
+                    </div>
         </form>
+
+<!--        template driven form-->
+
+<!--        <form #addTeacherForm="ngForm" (ngSubmit)="onAddTeacher(addTeacherForm)">-->
+<!--          <div class="form-group">-->
+<!--            <label for="name">Name</label>-->
+<!--            <input type="text" ngModel name="name" class="form-control" id="teachername" placeholder="Name" required>-->
+<!--          </div>-->
+<!--          <div class="form-group">-->
+<!--            <label for="editSurname">Student List</label>-->
+<!--            <div *ngFor="let student of students;let i=index">-->
+<!--              <label>{{ student.name }}</label>-->
+<!--              <input [(ngModel)]="student.name" type="checkbox" [value]="student.name" name="studentList" />-->
+<!--            </div>-->
+<!--&lt;!&ndash;            <input type="textarea" ngModel name="studentList" class="form-control" id="studentList" placeholder="Student1, student2, student3" required>&ndash;&gt;-->
+<!--          </div>-->
+<!--          <div class="modal-footer">-->
+<!--            <button (click)="closeAddTeacherPopup()" type="button" id="add-teacher-form" class="btn btn-danger" data-dismiss="modal">Close</button>-->
+<!--            <button [disabled]="addTeacherForm.invalid" type="submit" class="btn btn-primary" >Add Teacher</button>-->
+<!--          </div>-->
+<!--        </form>-->
 
       </div>
     </div>

@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 import { AppComponent } from './app.component';
-import {FormsModule} from "@angular/forms";
+import {FormsModule,ReactiveFormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
 
 describe('AppComponent', () => {
@@ -9,7 +9,7 @@ describe('AppComponent', () => {
       declarations: [
         AppComponent
       ],
-      imports:[FormsModule,HttpClientModule]
+      imports:[FormsModule,HttpClientModule,ReactiveFormsModule]
     }).compileComponents();
   });
 
