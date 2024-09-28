@@ -40,8 +40,8 @@
           </thead>
           <tbody>
           <tr *ngFor="let student of students">
-            <td>{{student?.name}}</td>
-            <td>{{student?.surname}}</td>
+            <td>{{student.name}}</td>
+            <td>{{student.surname}}</td>
             <td>
               <div class="float-left btn-group btn-group-sm">
                 <a (click)="onOpenStudentModal(student, 'edit')" class="btn btn-primary tooltips" data-placement="top" data-toggle="tooltip" data-original-title="Edit"><i class="fa fa-pencil" aria-hidden="true"></i> </a>
@@ -82,8 +82,8 @@
             </thead>
             <tbody>
             <tr *ngFor="let teacher of teachers">
-              <td>{{teacher?.name}}</td>
-              <td>{{teacher?.studentList}}</td>
+              <td>{{teacher.name}}</td>
+              <td>{{teacher.studentList}}</td>
               <td>
                 <div class="float-left btn-group btn-group-sm">
                   <a (click)="onOpenTeacherModal(teacher, 'edit')" class="btn btn-primary tooltips" data-placement="top" data-toggle="tooltip" data-original-title="Edit"><i class="fa fa-pencil" aria-hidden="true"></i> </a>
@@ -147,19 +147,19 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title"id="updateStudentModalLabel">Edit Employee {{editStudent?.name}}</h4>
+        <h4 class="modal-title"id="updateStudentModalLabel">Edit Employee {{editStudent.name}}</h4>
       </div>
       <div class="modal-body">
         <form #editForm="ngForm">
           <div class="form-group">
             <label for="name">Name</label>
-            <input type="text" ngModel="{{editStudent?.name}}" name="name" class="form-control" id="editName" aria-describedby="emailHelp" placeholder="Name">
+            <input type="text" ngModel="{{editStudent.name}}" name="name" class="form-control" id="editName" aria-describedby="emailHelp" placeholder="Name">
           </div>
           <div class="form-group">
             <label for="name">Name</label>
-            <input type="text" ngModel="{{editStudent?.surname}}" name="surname" class="form-control" id="editSurname" aria-describedby="emailHelp" placeholder="Surname">
+            <input type="text" ngModel="{{editStudent.surname}}" name="surname" class="form-control" id="editSurname" aria-describedby="emailHelp" placeholder="Surname">
           </div>
-          <input type="hidden" ngModel="{{editStudent?.id}}" name="id" class="form-control" id="id">
+          <input type="hidden" ngModel="{{editStudent.id}}" name="id" class="form-control" id="id">
 
           <div class="modal-footer">
             <button (click)="closeEditStudentPopup()" type="button" id="" data-dismiss="modal" class="btn btn-danger">Close</button>
@@ -184,7 +184,7 @@
         <h4 class="modal-title" id="deleteModelLabel">Delete Student</h4>
       </div>
       <div class="modal-body">
-        <p>Are you sure you want to delete student {{deleteStudent?.name}}?</p>
+        <p>Are you sure you want to delete student {{deleteStudent.name}}?</p>
         <div class="modal-footer">
           <button (click)="closeDeleteStudentPopup()" type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
           <button (click)="onDeleteStudent(deleteStudent.id!)" class="btn btn-danger" data-dismiss="modal">Yes</button>
@@ -261,19 +261,19 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title"id="updateTeacherModalLabel">Edit Employee {{editTeacher?.name}}</h4>
+        <h4 class="modal-title"id="updateTeacherModalLabel">Edit Employee {{editTeacher.name}}</h4>
       </div>
       <div class="modal-body">
         <form #editTeacherForm="ngForm">
           <div class="form-group">
             <label for="name">Name</label>
-            <input type="text" ngModel="{{editTeacher?.name}}" name="name" class="form-control" id="editTeacherName" aria-describedby="emailHelp" placeholder="Name">
+            <input type="text" ngModel="{{editTeacher.name}}" name="name" class="form-control" id="editTeacherName" aria-describedby="emailHelp" placeholder="Name">
           </div>
           <div class="form-group">
             <label for="name">Student List</label>
-            <input type="textarea" ngModel="{{editTeacher?.studentList}}" name="studentList" class="form-control" id="editStudentList" aria-describedby="emailHelp" placeholder="Student List">
+            <input type="textarea" ngModel="{{editTeacher.studentList}}" name="studentList" class="form-control" id="editStudentList" aria-describedby="emailHelp" placeholder="Student List">
           </div>
-          <input type="hidden" ngModel="{{editTeacher?.id}}" name="id" class="form-control" id="teacherId">
+          <input type="hidden" ngModel="{{editTeacher.id}}" name="id" class="form-control" id="teacherId">
 
           <div class="modal-footer">
             <button (click)="closeEditTeacherPopup()" type="button" data-dismiss="modal" class="btn btn-danger">Close</button>
@@ -298,7 +298,7 @@
         <h4 class="modal-title" id="deleteTeacherModelLabel">Delete Teacher</h4>
       </div>
       <div class="modal-body">
-        <p>Are you sure you want to delete teacher {{deleteTeacher?.name}}?</p>
+        <p>Are you sure you want to delete teacher {{deleteTeacher.name}}?</p>
         <div class="modal-footer">
           <button (click)="closeDeleteTeacherPopup()" type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
           <button (click)="onDeleteTeacher(deleteTeacher.id!)" class="btn btn-danger" data-dismiss="modal">Yes</button>
