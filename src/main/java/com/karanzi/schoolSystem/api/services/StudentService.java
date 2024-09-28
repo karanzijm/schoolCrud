@@ -3,20 +3,16 @@ package com.karanzi.schoolSystem.api.services;
 import com.karanzi.schoolSystem.api.entity.Student;
 import com.karanzi.schoolSystem.api.exceptions.UserNotFoundException;
 import com.karanzi.schoolSystem.api.repository.StudentRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 public class StudentService {
 
     private final StudentRepository studentRepository;
-
-    @Autowired
-    public StudentService(StudentRepository studentRepository) {
-        this.studentRepository = studentRepository;
-    }
 
     public Student addStudent(Student student){
         return studentRepository.save(student);

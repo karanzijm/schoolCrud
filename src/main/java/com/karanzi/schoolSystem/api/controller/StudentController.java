@@ -13,8 +13,8 @@ import java.util.List;
 @RestController
 @RequestMapping(path="Student")
 public class StudentController {
-    
-    private StudentService studentService;
+
+    private final StudentService studentService;
 
     @Autowired
     public StudentController(StudentService studentService) {

@@ -12,7 +12,7 @@ import java.util.List;
 @RestController
 @RequestMapping(path="/Teacher")
 public class TeacherController {
-    private TeacherService teacherService;
+    private final TeacherService teacherService;
 
     @Autowired
     public TeacherController(TeacherService teacherService) {
