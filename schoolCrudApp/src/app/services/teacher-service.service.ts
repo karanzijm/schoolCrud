@@ -14,6 +14,7 @@ export class TeacherServiceService {
   constructor(private http: HttpClient) { }
 
   public getTeachers(): Observable<Teacher[]>{
+    console.log(this.apiServiceUrl, ' -------- url ----------')
     return this.http.get<Teacher[]>(`${this.apiServiceUrl}/Teacher/all`)
   }
 
