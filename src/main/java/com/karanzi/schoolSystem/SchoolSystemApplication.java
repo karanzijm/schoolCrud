@@ -18,7 +18,7 @@ public class SchoolSystemApplication {
 		SpringApplication.run(SchoolSystemApplication.class, args);
 	}
 
-	@Bean
+	/*@Bean
 	public CorsFilter corsFilter() {
 		CorsConfiguration corsConfiguration = new CorsConfiguration();
 		corsConfiguration.setAllowCredentials(true);
@@ -33,5 +33,5 @@ public class SchoolSystemApplication {
 		return new CorsFilter(urlBasedCorsConfigurationSource);
 
 
-	}
+	}*/
 }
