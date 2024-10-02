@@ -36,6 +36,7 @@ build/
 /schoolCrudApp/.vscode
 /schoolCrudApp/.idea
 /schoolCrudApp/.angular
+app.log
 
 
 
