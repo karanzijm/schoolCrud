@@ -7,10 +7,8 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
 
 import java.util.List;
-import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 
 @Configuration
-@EnableWebSecurity
 public class SecurityConfiguration {
     @Bean
     public CorsFilter corsFilter() {
