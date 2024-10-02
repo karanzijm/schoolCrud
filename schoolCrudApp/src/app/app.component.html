@@ -143,6 +143,7 @@
   class="modal"
   tabindex="-1"
   role="dialog"
+  *ngIf="editStudent"
   [ngStyle]="{'display':displayEditStudentModal}">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -177,6 +178,7 @@
   class="modal"
   tabindex="-1"
   role="dialog"
+  *ngIf="deleteStudent"
   [ngStyle]="{'display':displayDeleteStudentModal}">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -257,6 +259,7 @@
   class="modal"
   tabindex="-1"
   role="dialog"
+  *ngIf="editTeacher"
   [ngStyle]="{'display':displayEditTeacherModal}">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -291,6 +294,7 @@
   class="modal"
   tabindex="-1"
   role="dialog"
+  *ngIf="deleteTeacher"
   [ngStyle]="{'display':displayDeleteTeacherModal}">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
